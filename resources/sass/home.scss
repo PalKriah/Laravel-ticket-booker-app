@@ -1,0 +1,50 @@
+.header-underline {
+    border-bottom: $primary 4px solid;
+}
+
+.text-middle {
+    font-size: 1.5rem;
+}
+
+#section {
+    &-one {
+        margin-top: 15vh;
+        margin-bottom: 15vh;
+        text-align: center;
+
+        p {
+            margin: 2rem 0;
+            font-size: 1.8rem;
+        }
+    }
+
+    &-two {
+        text-align: center;
+
+        .box {
+            margin: auto;
+            background-color: #555;
+            color: white;
+            border-radius: 5px;
+            margin: 1rem 2rem;
+            padding: 1rem;
+
+            i {
+                padding: 1.5rem;
+                background-color: $primary;
+                border-radius: 50%;
+                min-width: 120px;
+            }
+
+            .line {
+                border-bottom: dotted $primary 2px;
+                margin: 1rem 0;
+            }
+        }
+    }
+}
+
+.line {
+    border-bottom: dotted $primary 2px;
+    margin: 2rem 0;
+}

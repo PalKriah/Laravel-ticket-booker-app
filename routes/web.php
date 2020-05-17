@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/movie','MovieController@index')->name('movies.show');
+Route::post('/movie','MovieController@post');
+Route::get('/upload', function () {
+    return view('test');
+});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('content.home');
+});
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/user', function() {
+        return view('content.user');
+    })->name('user');
 });

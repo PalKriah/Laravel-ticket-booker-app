@@ -1,4 +1,47 @@
+$primary: #ff9900;
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "./home.scss";
+
+.btn-primary {
+    color: white;
+    font-weight: bold;
+}
+
+#content-area::before {
+    content: "";
+    background: url("/assets/cinema.jpg") no-repeat center center/cover;
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+#content-area {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: white;
+    padding-bottom: 1rem;
+    min-height: calc(100vh - 56px - 45px - 128px);
+}
+
+#footer {
+    &-main {
+        height: 45px;
+        color: #fff;
+        padding: 1.5rem 1rem 0.5rem 1rem;
+        text-align: center;
+        line-height: 0;
+        font-size: 1rem;
+    }
+}
+
+.rotate-45 {
+    transform: rotate(135deg);
+    font-size: 1rem;
+    padding-top: 1px;
+}

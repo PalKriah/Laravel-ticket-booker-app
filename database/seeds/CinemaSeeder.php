@@ -32,5 +32,12 @@ class CinemaSeeder extends Seeder
         $cinema->city = 'Eger';
         $cinema->location = 'Törvényház út 4.';
         $cinema->save();
+
+        $cinema = new Cinema();
+        $cinema->name = 'ODEON';
+        $cinema->country = 'United Kingdom';
+        $cinema->city = 'London';
+        $cinema->location = '135 Shaftesbury Ave, Covent Garden';
+        $cinema->save();
     }
 }

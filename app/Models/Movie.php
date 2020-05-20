@@ -15,9 +15,4 @@ class Movie extends Model
     {
         return $this->belongsToMany(Genre::class);
     }
-
-    public function getGenres()
-    {
-        return $this->morphToMany(Genre::class, 'genreable');
-    }
 }

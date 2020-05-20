@@ -48,3 +48,34 @@
     border-bottom: dotted $primary 2px;
     margin: 2rem 0;
 }
+
+#movie-list {
+    img {
+        width: 200px;
+        transition: ease-in opacity 0.5s;
+    }
+
+    img:hover {
+        opacity: 0.7;
+    }
+}
+
+#movie-item {
+    img {
+        width: 300px;
+        transition: ease-in transform 0.5s;
+    }
+    img:hover {
+        transform: scale(1.05);
+    }
+}
+
+.mt-10 {
+    margin-top: 10%;
+}
+
+.genre-label {
+    padding: 0.15rem 0.25rem;
+    background-color: $primary;
+    border-radius: 5px;
+}

@@ -10,10 +10,10 @@
             <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Movies</a>
+            <a href="{{ route('movies.index') }}" class="nav-link">Movies</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Cinemas</a>
+                <a href="{{ route('cinemas.index') }}" class="nav-link">Cinemas</a>
             </li>
         </ul>
 

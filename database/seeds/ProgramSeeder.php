@@ -16,28 +16,35 @@ class ProgramSeeder extends Seeder
         $program->movie_id = 1;
         $program->room_id = 1;
         $program->cinema_id = 1;
-        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-04-20 15:30:00');
+        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-06-20 15:30:00');
         $program->save();
 
         $program = new Program();
         $program->movie_id = 1;
         $program->room_id = 2;
         $program->cinema_id = 1;
-        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-04-20 17:30:00');
+        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-06-20 17:30:00');
         $program->save();
 
         $program = new Program();
         $program->movie_id = 3;
         $program->room_id = 1;
         $program->cinema_id = 2;
-        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-04-20 18:30:00');
+        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-06-20 18:30:00');
         $program->save();
 
         $program = new Program();
         $program->movie_id = 2;
         $program->room_id = 2;
         $program->cinema_id = 2;
-        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-04-20 10:30:00');
+        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-06-20 10:30:00');
+        $program->save();
+
+        $program = new Program();
+        $program->movie_id = 4;
+        $program->room_id = 2;
+        $program->cinema_id = 1;
+        $program->date = DateTime::createFromFormat('Y-m-d H:i:s', '2020-01-20 10:30:00');
         $program->save();
     }
 }

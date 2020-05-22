@@ -38,3 +38,5 @@ Route::get('/movies/{movie}','MovieController@show')->name('movies.show');
 Route::get('/cinemas/list/{movie?}','CinemaController@index')->name('cinemas.index');
 Route::get('/cinemas/schedule/{cinema}', 'CinemaController@schedule')->name('cinema.schedule');
 Route::get('/cinemas/search', 'CinemaController@search')->name('cinema.search');
+Route::get('/cinemas/get-schedule', 'CinemaController@getSchedule')->name('cinema.get-schedule');
+

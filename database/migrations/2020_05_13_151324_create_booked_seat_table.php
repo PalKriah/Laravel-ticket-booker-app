@@ -13,7 +13,7 @@ class CreateBookedSeatTable extends Migration
      */
     public function up()
     {
-        Schema::create('booked_seat', function (Blueprint $table) {
+        Schema::create('booked_seats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('program_id');
@@ -34,6 +34,6 @@ class CreateBookedSeatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booked_seat');
+        Schema::dropIfExists('booked_seats');
     }
 }

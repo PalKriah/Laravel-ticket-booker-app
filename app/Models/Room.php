@@ -14,4 +14,9 @@ class Room extends Model
     {
         return $this->belongsTo(Cinema::class);
     }
+
+    public function rows()
+    {
+        return $this->hasMany(Row::class);
+    }
 }

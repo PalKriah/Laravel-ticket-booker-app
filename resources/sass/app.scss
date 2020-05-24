@@ -40,6 +40,10 @@ $primary: #ff9900;
     }
 }
 
+.screen {
+    border-bottom: black 20px solid;
+}
+
 .rotate-45 {
     transform: rotate(135deg);
     font-size: 1rem;

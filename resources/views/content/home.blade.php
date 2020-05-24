@@ -5,7 +5,7 @@
     <h1><span class="header-underline">Book your ticket with us</span></h1>
     <p>We provide a ticket booking service at our partner cinemas.</p>
     @auth
-    <a href="{{ route('movies.show') }}" class="btn btn-primary btn-main">Book a ticket</a>
+    <a href="{{ route('movies.index') }}" class="btn btn-primary btn-main">Book a ticket</a>
     @endauth
 
     @guest

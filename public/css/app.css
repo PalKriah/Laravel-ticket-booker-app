@@ -17052,6 +17052,17 @@ readers do not read off random characters that represent icons */
   border-radius: 5px;
 }
 
+a.disabled {
+  color: gray;
+  pointer-events: none;
+}
+
+.btn-time {
+  padding: 0.25rem;
+  margin: 0.5rem;
+  font-weight: normal;
+}
+
 .btn-primary {
   color: white;
   font-weight: bold;
@@ -17083,6 +17094,10 @@ readers do not read off random characters that represent icons */
   text-align: center;
   line-height: 0;
   font-size: 1rem;
+}
+
+.screen {
+  border-bottom: black 20px solid;
 }
 
 .rotate-45 {

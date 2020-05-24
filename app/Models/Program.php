@@ -25,4 +25,9 @@ class Program extends Model
     {
         return $this->belongsTo(Cinema::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(BookedSeat::class);
+    }
 }

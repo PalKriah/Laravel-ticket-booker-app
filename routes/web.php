@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/user', function() {
         return view('content.user');
     })->name('user');
+    Route::get('/booking/{program}', 'BookingController@index')->name('booking.index');
+    Route::post('/booking', 'BookingController@post')->name('booking.post');
 });
 
 Route::get('/movies','MovieController@index')->name('movies.index');

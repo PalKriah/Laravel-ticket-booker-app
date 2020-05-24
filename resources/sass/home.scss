@@ -79,3 +79,14 @@
     background-color: $primary;
     border-radius: 5px;
 }
+
+a.disabled {
+    color: gray;
+    pointer-events: none;
+}
+
+.btn-time {
+    padding: 0.25rem;
+    margin: 0.5rem;
+    font-weight: normal;
+}

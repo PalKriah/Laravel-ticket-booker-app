@@ -37,8 +37,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
     public function getFullnameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
+    }
+
+    public function getIsAdminAttribute()
+    {
+        foreach ($this->roles as $key => $value) {
+            if ($value->name == 'Admin') {
+                return true;
+            }
+        }
+        return false;
     }
 }

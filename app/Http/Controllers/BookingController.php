@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\Program;
-use App\Rules\Occupied;
+use App\Models\BookedSeat;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\Occupied;
 use App\Rules\SeatNumber;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
@@ -25,7 +24,7 @@ class BookingController extends Controller
             'program' => 'required|exists:programs,id',
             'selected' => 'required|json',
         ]);
-        $program = DB::table('programs')->find($request->program);
+        $program = Program::find($request->program);
         $seats = json_decode($request->selected, true);
         Validator::make($seats, [
             '*.row' => [
@@ -41,8 +40,7 @@ class BookingController extends Controller
         ])->validate();
 
         foreach ($seats as $key => $value) {
-            DB::table('booked_seats')
-                ->insert([
+            BookedSeat::create([
                     'user_id' => Auth::user()->id,
                     'row' => $value['row'],
                     'seat' => $value['seat'],

@@ -1,4 +1,11 @@
 $primary: #ff9900;
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+
+$dropdown-bg:                       $dark;
+$dropdown-link-color:               $light;
+
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
@@ -48,4 +55,8 @@ $primary: #ff9900;
     transform: rotate(135deg);
     font-size: 1rem;
     padding-top: 1px;
+}
+
+.transparant {
+    opacity: 0.98;
 }

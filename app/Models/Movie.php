@@ -15,4 +15,9 @@ class Movie extends Model
     {
         return $this->belongsToMany(Genre::class);
     }
+
+    public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
 }

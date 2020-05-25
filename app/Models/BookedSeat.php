@@ -10,4 +10,14 @@ class BookedSeat extends Model
         'user_id', 'row',
         'seat', 'program_id'
     ];
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

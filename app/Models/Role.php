@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class Role extends Model
 {
-    public function movies()
+    public function users()
     {
         return $this->belongsToMany(Movie::class);
     }

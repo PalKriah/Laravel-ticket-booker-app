@@ -11,7 +11,7 @@ class RoomController extends Controller
 {
     public function create(Cinema $cinema)
     {
-        return view('content.room-create')->with('cinema', $cinema);
+        return view('content.room.create')->with('cinema', $cinema);
     }
 
     public function insert(Cinema $cinema, RoomRequest $request)
@@ -28,12 +28,12 @@ class RoomController extends Controller
             $row->seat_count = $request->rows[$i-1];
             $row->save();
         }
-        return redirect()->route('programs.list', ['cinema' => $cinema]);
+        return redirect()->route('programs.list', ['cinema' => $cinema])->with('success', __('Room added successfully'));
     }
 
     public function delete(Cinema $cinema, Room $room)
     {
         $room->delete();
-        return redirect()->route('programs.list', ['cinema' => $cinema]);
+        return redirect()->route('programs.list', ['cinema' => $cinema])->with('success', __('Room deleted successfully'));
     }
 }

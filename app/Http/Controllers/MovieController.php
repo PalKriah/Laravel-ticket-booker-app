@@ -21,18 +21,18 @@ class MovieController extends Controller
             })->get();
         }
 
-        return view('content.movie-list')->with('movies', $movies);
+        return view('content.movie.list')->with('movies', $movies);
     }
 
     public function show(Movie $movie)
     {
-        return view('content.movie-item')->with('movie', $movie);
+        return view('content.movie.item')->with('movie', $movie);
     }
 
     public function create()
     {
         $genres = DB::table('genres')->get();
-        return view('content.movie-create')->with(['genres' => $genres]);
+        return view('content.movie.create')->with(['genres' => $genres]);
     }
 
     public function insert(MovieRequest $request)
@@ -53,17 +53,17 @@ class MovieController extends Controller
         Storage::disk('public')->put($path, $resize);
         $movie->poster_path = 'storage/' . $path;
         $movie->save();
-        foreach ($request->genres as $key => $reqGenre) {
+        foreach ($request->genres as $reqGenre) {
             $movie->genres()->attach($reqGenre);
         }
 
-        return redirect()->route('movies.show', ['movie' => $movie]);
+        return redirect()->route('movies.show', ['movie' => $movie])->with('success', __('Movie added successfully'));
     }
 
     public function edit(Movie $movie)
     {
         $genres = DB::table('genres')->get();
-        return view('content.movie-edit')->with(['movie' => $movie, 'genres' => $genres]);
+        return view('content.movie.edit')->with(['movie' => $movie, 'genres' => $genres]);
     }
 
     public function update(Movie $movie, MovieRequest $request)
@@ -71,9 +71,9 @@ class MovieController extends Controller
         $movie->name = $request->movie['name'];
         $movie->description = $request->movie['description'];
         $movie->name = $request->movie['name'];
-        foreach ($request->genres as $key => $reqGenre) {
+        foreach ($request->genres as $reqGenre) {
             $found = false;
-            foreach ($movie->genres as $key => $movieGenre) {
+            foreach ($movie->genres as $movieGenre) {
                 if ($movieGenre->id == $reqGenre) {
                     $found = true;
                 }
@@ -83,9 +83,9 @@ class MovieController extends Controller
             }
         }
 
-        foreach ($movie->genres as $key => $movieGenre) {
+        foreach ($movie->genres as $movieGenre) {
             $found = false;
-            foreach ($request->genres as $key => $reqGenre) {
+            foreach ($request->genres as $reqGenre) {
                 if ($movieGenre->id == $reqGenre) {
                     $found = true;
                 }
@@ -107,13 +107,13 @@ class MovieController extends Controller
         }
         $movie->save();
 
-        return redirect()->route('movies.show', ['movie' => $movie]);
+        return redirect()->route('movies.show', ['movie' => $movie])->with('success', __('Movie updated successfully'));
     }
 
     public function delete(Movie $movie)
     {
         Storage::disk('public')->delete(substr($movie->poster_path, strpos($movie->poster_path, "/") + 1));
         $movie->delete();
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.index')->with('success', __('Movie deleted successfully'));
     }
 }

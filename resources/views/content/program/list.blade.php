@@ -4,9 +4,9 @@
 <div class="row justify-content-center">
     <h1 class="col-md-10"><span class="header-underline">{{ $cinema->name }}</span></h1>
 
-    <h3 class="col-md-8">Programs:</h3>
+    <h3 class="col-md-8">{{ __('Programs:') }}</h3>
     <div class="col-md-8 mb-2 text-right">
-        <a href="{{ route('programs.create', ['cinema'=>$cinema]) }}" class="btn btn-success"><i class="fas fa-plus"></i> Add</a>
+        <a href="{{ route('programs.create', ['cinema'=>$cinema]) }}" class="btn btn-success"><i class="fas fa-plus"></i> {{ __('Add') }}</a>
     </div>
     <table class="table table-responsive col-md-8 d-block d-md-table table-dark table-striped p-0 mx-auto">
         <tr>
@@ -37,9 +37,9 @@
         @endforeach
     </table>
 
-    <h3 class="col-md-8">Rooms:</h3>
+    <h3 class="col-md-8">{{ __('Rooms:') }}</h3>
     <div class="col-md-8 mb-2 text-right">
-        <a href="{{ route('rooms.create', ['cinema'=>$cinema]) }}" class="btn btn-success"><i class="fas fa-plus"></i> Add</a>
+        <a href="{{ route('rooms.create', ['cinema'=>$cinema]) }}" class="btn btn-success"><i class="fas fa-plus"></i> {{ __('Add') }}</a>
     </div>
     <table class="table table-responsive col-md-8 d-block d-md-table table-dark table-striped p-0 mx-auto">
         <tr>

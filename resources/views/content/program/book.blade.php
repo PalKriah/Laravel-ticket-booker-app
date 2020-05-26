@@ -1,15 +1,15 @@
 @extends('layout.main')
 
 @section('content')
-<h3><span class="header-underline">Movie:</span></h3>
+<h3><span class="header-underline">{{ __('Movie:') }}</span></h3>
 <p>{{ $program->movie->name }}</p>
-<h3><span class="header-underline">Cinema:</span></h3>
+<h3><span class="header-underline">{{ __('Cinema:') }}</span></h3>
 <h6>{{ $program->cinema->name }}</h6>
 <p>{{ $program->cinema->city }}, {{ $program->cinema->location }}</p>
-<h3><span class="header-underline">Date:</h3>
+<h3><span class="header-underline">{{ __('Date:') }}</h3>
 <p>{{ $program->date }}</p>
 <div class="line"></div>
-<h4>Room: {{ $program->room->number }}</span></h4>
+<h4>{{ __('Room:') }} {{ $program->room->number }}</span></h4>
 <div class="card bg-light col-md-8 m-auto overflow-auto">
     <div class="screen mb-2"></div>
     @foreach ($program->room->rows as $row)
@@ -44,7 +44,7 @@
     @csrf
     <input type="hidden" name="selected" id="toggled">
     <input type="hidden" name="program" value="{{ $program->id }}">
-    <button type="submit" class="btn btn-block btn-primary my-2 col-md-8 mx-auto">Book seats</button>
+    <button type="submit" class="btn btn-block btn-primary my-2 col-md-8 mx-auto">{{ __('Book seats') }}</button>
 </form>
 
 <script>

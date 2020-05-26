@@ -11,19 +11,19 @@ class ProgramController extends Controller
 {
     public function index(Cinema $cinema)
     {
-        return view('content.program-list')->with('cinema', $cinema);
+        return view('content.program.list')->with('cinema', $cinema);
     }
 
     public function create(Cinema $cinema)
     {
         $movies = Movie::get();
-        return view('content.program-create')->with(['cinema' => $cinema, 'movies' => $movies]);
+        return view('content.program.create')->with(['cinema' => $cinema, 'movies' => $movies]);
     }
 
     public function insert(Cinema $cinema, ProgramRequest $request)
     {
         Program::create($request->program);
-        return redirect()->route('programs.list', ['cinema' => $cinema]);
+        return redirect()->route('programs.list', ['cinema' => $cinema])->with('success', __('Program added successfully'));
     }
 
     public function delete(Cinema $cinema, Program $program)
@@ -33,6 +33,6 @@ class ProgramController extends Controller
         foreach ($bookings as $booking) {
             $booking->delete();
         }
-        return redirect()->route('programs.list', ['cinema' => $cinema]);
+        return redirect()->route('programs.list', ['cinema' => $cinema])->with('success', __('Program deleted successfully'));
     }
 }

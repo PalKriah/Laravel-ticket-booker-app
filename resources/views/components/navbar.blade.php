@@ -7,41 +7,41 @@
     <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a href="/" class="nav-link">Home</a>
+            <a href="/" class="nav-link">{{ __('Home') }}</a>
             </li>
             <li class="nav-item">
-            <a href="{{ route('movies.index') }}" class="nav-link">Movies</a>
+            <a href="{{ route('movies.index') }}" class="nav-link">{{ __('Movies') }}</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('cinemas.index') }}" class="nav-link">Cinemas</a>
+                <a href="{{ route('cinemas.index') }}" class="nav-link">{{ __('Cinemas') }}</a>
             </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
             @guest
             <li class="nav-item">
-                <a href="{{ route('register') }}" class="nav-link">Register</a>
+                <a href="{{ route('register') }}" class="nav-link">{{ __('Register') }}</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('login') }}" class="nav-link">Login</a>
+                <a href="{{ route('login') }}" class="nav-link">{{ __('Login') }}</a>
             </li>
             @else
             @if (Auth::user()->isAdmin)
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin
+                  {{ __('Admin') }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('movies.create') }}">Add movie</a>
-                    <a class="dropdown-item" href="{{ route('cinemas.create') }}">Add cinema</a>
-                    <a class="dropdown-item" href="{{ route('users.ownership') }}">Manage Ownership</a>
+                    <a class="dropdown-item" href="{{ route('movies.create') }}">{{ __('Add movie') }}</a>
+                    <a class="dropdown-item" href="{{ route('cinemas.create') }}">{{ __('Add cinema') }}</a>
+                    <a class="dropdown-item" href="{{ route('users.ownership') }}">{{ __('Manage Ownership') }}</a>
                 </div>
             </li>
             @endif
             @if (Auth::user()->cinemas->count() > 0)
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Owned cinemas
+                  {{ __('Owned cinemas') }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @foreach (Auth::user()->cinemas as $cinema)
@@ -57,7 +57,7 @@
             <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                    Logout
+                    {{ __('Logout') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

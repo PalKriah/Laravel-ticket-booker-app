@@ -18,13 +18,12 @@
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">Country: {{ $cinema->country }}</li>
-                <li class="list-group-item">Location: {{ $cinema->city }}, {{ $cinema->location }}</li>
+                <li class="list-group-item">{{ __('Country:') }} {{ $cinema->country }}</li>
+                <li class="list-group-item">{{ __('Location:') }} {{ $cinema->city }}, {{ $cinema->location }}</li>
             </ul>
             <div class="row justify-content-end m-0 mt-2">
                 <a href="{{ route('cinemas.show', ['cinema' => $cinema->id]) }}"
-                    class="btn btn-primary col-md-2 col-6">View
-                    schedule</a>
+                    class="btn btn-primary col-md-2 col-6">{{ __('View schedule') }}</a>
             </div>
         </div>
     </div>

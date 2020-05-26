@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <h2 class="col-md-8"><span class="header-underline">{{ $cinema->name }} add program:</span></h2>
+    <h2 class="col-md-8"><span class="header-underline">{{ $cinema->name }} {{ __('add program:') }}</span></h2>
     <form action="{{ route('programs.insert', ['cinema'=>$cinema]) }}" method="POST" class="col-md-8">
         @csrf
         <div class="row mt-4">
             <div class="col-md-9 form-group">
-                <label for="program[movie_id]">Movie</label>
+                <label for="program[movie_id]">{{ __('Movie') }}</label>
                 <select class="form-control @error('program.room_id') is-invalid @enderror" name="program[movie_id]">
-                    <option value>Select movie</option>
+                    <option value>{{ __('Select movie') }}</option>
                     @foreach ($movies as $movie)
                     <option value="{{ $movie->id }}">{{ $movie->name }}</option>
                     @endforeach
@@ -22,9 +22,9 @@
             </div>
 
             <div class="col-md-3 form-group">
-                <label for="program[room_id]">Room</label>
+                <label for="program[room_id]">{{ __('Room') }}</label>
                 <select class="form-control @error('program.room_id') is-invalid @enderror" name="program[room_id]">
-                    <option value>Select room</option>
+                    <option value>{{ __('Select room') }}</option>
                     @foreach ($cinema->rooms as $room)
                     <option value="{{ $room->id }}">{{ $room->number }}</option>
                     @endforeach

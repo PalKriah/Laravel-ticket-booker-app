@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Movie;
 use App\Models\Cinema;
 use App\Http\Requests\CinemaRequest;
-use App\Models\BookedSeat;
-use App\Models\Program;
 use DateTime;
 
 class CinemaController extends Controller
@@ -23,7 +21,7 @@ class CinemaController extends Controller
             ->where('date', '>', date("Y-m-d h:i:sa"))
             ->distinct()
             ->get();
-        return view('content.cinema-list')->with(['countries' => $countries, 'cities' => $cities, 'movies' => $movies, 'movie' => $movie]);
+        return view('content.cinema.list')->with(['countries' => $countries, 'cities' => $cities, 'movies' => $movies, 'movie' => $movie]);
     }
 
     public function search(Request $request)
@@ -101,7 +99,7 @@ class CinemaController extends Controller
         }
         array_push($out, ["year" => $year, "month" => $month, "month_name" => $monthName, "date" => $monthDays]);
 
-        return view('content.cinema-schedule')->with(['cinema' => $cinema, 'dates' => $out]);
+        return view('content.cinema.schedule')->with(['cinema' => $cinema, 'dates' => $out]);
     }
 
     public function schedule(Request $request)
@@ -137,32 +135,32 @@ class CinemaController extends Controller
 
     public function create()
     {
-        return view('content.cinema-create');
+        return view('content.cinema.create');
     }
 
     public function insert(CinemaRequest $request)
     {
         $cinema = Cinema::create($request->cinema);
 
-        return redirect()->route('cinemas.show', ['cinema' => $cinema]);
+        return redirect()->route('cinemas.show', ['cinema' => $cinema])->with('success', __('Cinema added successfully'));
     }
 
     public function edit(Cinema $cinema)
     {
-        return view('content.cinema-edit')->with('cinema', $cinema);
+        return view('content.cinema.edit')->with('cinema', $cinema);
     }
 
     public function update(Cinema $cinema, CinemaRequest $request)
     {
         $cinema->update($request->cinema);
 
-        return redirect()->route('cinemas.show', ['cinema' => $cinema]);
+        return redirect()->route('cinemas.show', ['cinema' => $cinema])->with('success', __('Cinema updated successfully'));
     }
 
     public function delete(Cinema $cinema)
     {
         $cinema->delete();
 
-        return redirect()->route('cinemas.index');
+        return redirect()->route('cinemas.index')->with('success', __('Cinema deleted successfully'));
     }
 }

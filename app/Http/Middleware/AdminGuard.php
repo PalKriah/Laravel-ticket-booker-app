@@ -19,6 +19,6 @@ class AdminGuard
         if (Auth::user() && Auth::user()->isAdmin == true) {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/')->with('error', __('Unauthorized access'));
     }
 }

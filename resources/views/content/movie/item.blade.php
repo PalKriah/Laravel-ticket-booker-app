@@ -10,25 +10,26 @@
             @auth
             @if (Auth::user()->isAdmin)
             <div class="flex-d flex-row text-right">
-                <a href="{{ route('movies.edit', ['movie'=>$movie]) }}" class="btn btn-light">Edit <i class="fas fa-pencil-alt"></i></a>
-                <a href="{{ route('movies.delete', ['movie'=>$movie]) }}" class="btn btn-danger" onclick="event.preventDefault();
-                    document.getElementById('delete-form').submit();"><i class="fas fa-times"></i></a>
-                <form id="delete-form" action="{{ route('movies.delete', ['movie'=>$movie]) }}" method="POST" style="display: none;">
+                <a href="{{ route('movies.edit', ['movie'=>$movie]) }}" class="btn btn-info"><i
+                        class="fas fa-pencil-alt"></i></a>
+                <form action="{{ route('movies.delete', ['movie'=>$movie]) }}" method="POST" class="d-inline">
                     @csrf
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
                 </form>
             </div>
             @endif
             @endauth
             <h4 class="text-center"><span class="header-underline">{{ $movie->name }}</span></h4>
-            <h5 class="mt-3">Genre :</h5>
+            <h5 class="mt-3">{{ __('Genre :') }}</h5>
             <p>
                 @foreach ($movie->genres as $genre)
                 <span class="genre-label">{{ $genre->name }}</span>
                 @endforeach
             </p>
-            <h5>Description :</h5>
+            <h5>{{ __('Description :') }}</h5>
             <p>{{ $movie->description }}</p>
-                <a href="{{ route('cinemas.index', ['movie' => $movie->id]) }}" class="btn btn-block btn-primary">View cinemas</a>
+            <a href="{{ route('cinemas.index', ['movie' => $movie->id]) }}"
+                class="btn btn-block btn-primary">{{ __('View cinemas') }}</a>
         </div>
     </div>
 </div>

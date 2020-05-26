@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-6 form-group">
         <select class="form-control" name="select" id="searchCountry" onchange="search_change()">
-            <option selected value>Select county</option>
+            <option selected value>{{ __('Select county') }}</option>
             @foreach ($countries as $country)
             <option value="{{ $country->country }}">{{ $country->country }}</option>
             @endforeach
@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-6 form-group">
         <select class="form-control" name="select" id="searchCity" onchange="search_change()">
-            <option selected value>Select city</option>
+            <option selected value>{{ __('Select city') }}</option>
             @foreach ($cities as $city)
             <option value="{{ $city->city }}">{{ $city->city }}</option>
             @endforeach
@@ -23,14 +23,14 @@
 <div class="row justify-content-center">
     <div class="col-md-6 form-group">
         <select class="form-control" name="select" id="searchMovie" onchange="search_change()">
-            <option value>Select movie</option>
+            <option value>{{ __('Select movie') }}</option>
             @foreach ($movies as $movieItem)
             <option {{ $movie && $movie->id == $movieItem->id ? 'selected': '' }} value="{{ $movieItem->id }}">{{ $movieItem->name }}</option>
             @endforeach
         </select>
     </div>
 </div>
-<h1><span class="header-underline">Cinemas:</span></h1>
+<h1><span class="header-underline">{{ __('Cinemas:') }}</span></h1>
 <div id="list">
 
 </div>

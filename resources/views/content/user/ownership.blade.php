@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="row justify-content-center">
-<h1 class="col-md-8"><span class="header-underline">{{ __('Add Ownership') }}</span></h1>
+    <h1 class="col-md-8"><span class="header-underline">{{ __('Add Ownership') }}</span></h1>
     <form action="{{ route('users.ownership.insert') }}" method="POST" class="col-md-8 row mt-3">
         @csrf
         <div class="col-md-6 form-group">
             <select class="form-control" name="cinema">
-                <option value>Select cinema</option>
+                <option value>{{ __('Select cinema') }}</option>
                 @foreach ($cinemas as $cinema)
                 <option value="{{ $cinema->id }}">{{ $cinema->name }}</option>
                 @endforeach
@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6 form-group">
             <select class="form-control" name="user">
-                <option value>Select user</option>
+                <option value>{{ __('Select user') }}</option>
                 @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->email }}</option>
                 @endforeach
@@ -23,7 +23,7 @@
         </div>
         <input type="submit" value="Submit" class="btn btn-primary col-md-4 col-6 mx-auto">
     </form>
-    <h3 class="col-md-8 mt-4 mb-3">Ownerships</h3>
+    <h3 class="col-md-8 mt-4 mb-3">{{ __('Ownerships') }}</h3>
 </div>
 
 <div class="table-responsive row m-0">
@@ -43,7 +43,8 @@
                 {{ $ownerUser->email }}
             </td>
             <td>
-                <form action="{{ route('users.ownership.delete', ['user'=>$ownerUser, 'cinema'=>$cinema]) }}" method="POST">
+                <form action="{{ route('users.ownership.delete', ['user'=>$ownerUser, 'cinema'=>$cinema]) }}"
+                    method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
                 </form>

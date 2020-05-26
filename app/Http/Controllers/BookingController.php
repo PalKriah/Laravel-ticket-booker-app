@@ -15,7 +15,7 @@ class BookingController extends Controller
 {
     public function index(Program $program)
     {
-        return view('content.book')->with(['program' => $program]);
+        return view('content.program.book')->with(['program' => $program]);
     }
 
     public function post(Request $request)
@@ -39,15 +39,15 @@ class BookingController extends Controller
             new Occupied($program->room_id)
         ])->validate();
 
-        foreach ($seats as $key => $value) {
+        foreach ($seats as $value) {
             BookedSeat::create([
-                    'user_id' => Auth::user()->id,
-                    'row' => $value['row'],
-                    'seat' => $value['seat'],
-                    'program_id' => $program->id
-                ]);
+                'user_id' => Auth::user()->id,
+                'row' => $value['row'],
+                'seat' => $value['seat'],
+                'program_id' => $program->id
+            ]);
         }
 
-        return redirect('user')->with('message', 'Ticket succesfully booked.');
+        return redirect('user')->with('success', __('Ticket succesfully booked.'));
     }
 }

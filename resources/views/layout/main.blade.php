@@ -13,6 +13,8 @@
 <body>
   <x-navbar />
   <div class="container" id="content-area">
+    @include('alerts._success')
+    @include('alerts._error')
     @yield('content')
     </p>
   </div>

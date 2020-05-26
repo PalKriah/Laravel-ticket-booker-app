@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $tickets = BookedSeat::join('programs', 'program_id', '=', 'programs.id')->where('user_id', Auth::user()->id)->orderBy('programs.date')->get();
-        return view('content.user')->with('tickets', $tickets);
+        return view('content.user.tickets')->with('tickets', $tickets);
     }
 
     public function ownership()
@@ -22,7 +22,7 @@ class UserController extends Controller
         $ownerUsers = User::has('cinemas')->get();
         $cinemas = DB::table('cinemas')->select('id', 'name')->get();
         $users = DB::table('users')->select('id', 'email')->get();
-        return view('content.ownership')->with(['ownerUsers' => $ownerUsers, 'cinemas' => $cinemas, 'users' => $users]);
+        return view('content.user.ownership')->with(['ownerUsers' => $ownerUsers, 'cinemas' => $cinemas, 'users' => $users]);
     }
 
     public function ownershipInsert(Request $request)
@@ -33,12 +33,12 @@ class UserController extends Controller
         ]);
         $user = User::find($request->user);
         $user->cinemas()->attach($request->cinema);
-        return redirect()->route('users.ownership');
+        return redirect()->route('users.ownership')->with('success', __('Relation added successfully'));
     }
 
     public function ownershipDelete(User $user, Cinema $cinema)
     {
         $user->cinemas()->detach($cinema->id);
-        return redirect()->route('users.ownership');
+        return redirect()->route('users.ownership')->with('success', __('Relation deleted successfully'));
     }
 }

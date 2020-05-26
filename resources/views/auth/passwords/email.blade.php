@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <h3 class="text-center">Reset Password</h3>
+        <h3 class="text-center">{{ __('Reset Password') }}</h3>
 
         @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -15,7 +15,7 @@
             @csrf
 
             <div class="form-group ">
-                <label for="email" class="col-form-label text-md-right">Email Address</label>
+                <label for="email" class="col-form-label text-md-right">{{ __('Email Address') }}</label>
 
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                     value="{{ old('email') }}" autofocus>
@@ -29,7 +29,7 @@
 
             <div class="form-group row justify-content-center mb-0">
                 <button type="submit" class="btn btn-primary">
-                    Send Password Reset Link
+                    {{ __('Send Password Reset Link') }}
                 </button>
             </div>
         </form>

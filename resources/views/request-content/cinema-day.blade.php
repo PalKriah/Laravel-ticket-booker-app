@@ -10,6 +10,9 @@
     </div>
     <div class="d-flex">
     <h5 class="my-auto">{{ $program->name }}:</h5>
+    <?php
+    $movie = $program->name;
+    ?>
 @endif
 <a href="{{ route('booking.index', ['program' => $program->id]) }}" class="btn btn-primary btn-time">{{ $program->date }}</a>
 @endforeach

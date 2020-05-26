@@ -20,7 +20,7 @@
     function fetch_day_schedule(year, month, day, cinema)
     {
         $.ajax({
-            url: "{{ route('cinema.get-schedule') }}",
+            url: "{{ route('cinemas.schedule') }}",
             method: 'GET',
             data:{
                 year: year,
@@ -31,7 +31,6 @@
             dataType: 'json',
             success: function(data)
             {
-                console.log(data);
                 $('#list').html(data);
             }
         });

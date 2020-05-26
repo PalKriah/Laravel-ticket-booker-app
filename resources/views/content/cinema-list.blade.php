@@ -42,7 +42,7 @@
     function fetch_cinema_data(country, city, movie)
     {
         $.ajax({
-            url: "{{ route('cinema.search') }}",
+            url: "{{ route('cinemas.search') }}",
             method: 'GET',
             data:{
                 country: country,

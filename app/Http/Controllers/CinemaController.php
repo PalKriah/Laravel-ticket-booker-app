@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Movie;
 use App\Models\Cinema;
-use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\CinemaRequest;
 use DateTime;
 
 class CinemaController extends Controller
@@ -58,7 +58,7 @@ class CinemaController extends Controller
         echo json_encode($data);
     }
 
-    public function schedule(Cinema $cinema)
+    public function show(Cinema $cinema)
     {
         $dates = DB::table('programs')
             ->select('date')
@@ -67,7 +67,7 @@ class CinemaController extends Controller
             ->distinct()
             ->get();
 
-        $date = new DateTime('2020-05-29');
+        $date = new DateTime();
         $out = array();
         $year = date_format($date, "Y");
         $month = date_format($date, "n");
@@ -101,7 +101,7 @@ class CinemaController extends Controller
         return view('content.cinema-schedule')->with(['cinema' => $cinema, 'dates' => $out]);
     }
 
-    public function getSchedule(Request $request)
+    public function schedule(Request $request)
     {
         $year = $request->get('year');
         $month = $request->get('month');
@@ -130,5 +130,36 @@ class CinemaController extends Controller
         }
 
         echo json_encode($data);
+    }
+
+    public function create()
+    {
+        return view('content.cinema-create');
+    }
+
+    public function insert(CinemaRequest $request)
+    {
+        $cinema = Cinema::create($request->cinema);
+
+        return redirect()->route('cinemas.show', ['cinema' => $cinema]);
+    }
+
+    public function edit(Cinema $cinema)
+    {
+        return view('content.cinema-edit')->with('cinema', $cinema);
+    }
+
+    public function update(Cinema $cinema, CinemaRequest $request)
+    {
+        $cinema->update($request->cinema);
+
+        return redirect()->route('cinemas.show', ['cinema' => $cinema]);
+    }
+
+    public function delete(Cinema $cinema)
+    {
+        $cinema->delete();
+
+        return redirect()->route('cinemas.index');
     }
 }

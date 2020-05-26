@@ -7,6 +7,18 @@
     </div>
     <div class="col-md-6">
         <div class="flex-d flex-column">
+            @auth
+            @if (Auth::user()->isAdmin)
+            <div class="flex-d flex-row text-right">
+                <a href="{{ route('movies.edit', ['movie'=>$movie]) }}" class="btn btn-light">Edit <i class="fas fa-pencil-alt"></i></a>
+                <a href="{{ route('movies.delete', ['movie'=>$movie]) }}" class="btn btn-danger" onclick="event.preventDefault();
+                    document.getElementById('delete-form').submit();"><i class="fas fa-times"></i></a>
+                <form id="delete-form" action="{{ route('movies.delete', ['movie'=>$movie]) }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+            @endif
+            @endauth
             <h4 class="text-center"><span class="header-underline">{{ $movie->name }}</span></h4>
             <h5 class="mt-3">Genre :</h5>
             <p>

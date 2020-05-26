@@ -16,29 +16,38 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/movie','MovieController@index')->name('movies.show');
-Route::post('/movie','MovieController@post');
-Route::get('/upload', function () {
-    return view('test');
-});
-
 Route::get('/', function () {
     return view('content.home');
 });
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/user', function() {
-        return view('content.user');
-    })->name('user');
+Route::get('/movies', 'MovieController@index')->name('movies.index');
+Route::get('/movies/{movie}', 'MovieController@show')->name('movies.show');
+
+Route::get('/cinemas-list/{movie?}', 'CinemaController@index')->name('cinemas.index');
+Route::get('/cinemas/{cinema}', 'CinemaController@show')->name('cinemas.show');
+Route::get('/cinemas-search', 'CinemaController@search')->name('cinemas.search');
+Route::get('/cinemas-schedule', 'CinemaController@schedule')->name('cinemas.schedule');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/user', 'UserController@index')->name('user');
     Route::get('/booking/{program}', 'BookingController@index')->name('booking.index');
     Route::post('/booking', 'BookingController@post')->name('booking.post');
 });
 
-Route::get('/movies','MovieController@index')->name('movies.index');
-Route::get('/movies/{movie}','MovieController@show')->name('movies.show');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/movie-create', 'MovieController@create')->name('movies.create');
+    Route::post('/movie-insert', 'MovieController@insert')->name('movies.insert');
+    Route::get('/movies-edit/{movie}', 'MovieController@edit')->name('movies.edit');
+    Route::post('/movie-update/{movie}', 'MovieController@update')->name('movies.update');
+    Route::post('/movie-delete/{movie}', 'MovieController@delete')->name('movies.delete');
 
-Route::get('/cinemas/list/{movie?}','CinemaController@index')->name('cinemas.index');
-Route::get('/cinemas/schedule/{cinema}', 'CinemaController@schedule')->name('cinema.schedule');
-Route::get('/cinemas/search', 'CinemaController@search')->name('cinema.search');
-Route::get('/cinemas/get-schedule', 'CinemaController@getSchedule')->name('cinema.get-schedule');
+    Route::get('/cinema-create', 'CinemaController@create')->name('cinemas.create');
+    Route::post('/cinema-insert', 'CinemaController@insert')->name('cinemas.insert');
+    Route::get('/cinemas-edit/{cinema}', 'CinemaController@edit')->name('cinemas.edit');
+    Route::post('/cinema-update/{cinema}', 'CinemaController@update')->name('cinemas.update');
+    Route::post('/cinema-delete/{cinema}', 'CinemaController@delete')->name('cinemas.delete');
 
+    Route::get('/ownership', 'UserController@ownership')->name('users.ownership');
+    Route::post('/ownership-insert', 'UserController@ownershipInsert')->name('users.ownership.insert');
+    Route::post('/ownership-delete/{user}{cinema}', 'UserController@ownershipDelete')->name('users.ownership.delete');
+});

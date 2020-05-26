@@ -15,6 +15,20 @@
             <li class="nav-item">
                 <a href="{{ route('cinemas.index') }}" class="nav-link">Cinemas</a>
             </li>
+            @auth
+            @if (Auth::user()->isAdmin)
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('movies.create') }}">Add movie</a>
+                    <a class="dropdown-item" href="{{ route('cinemas.create') }}">Add cinema</a>
+                    <a class="dropdown-item" href="{{ route('users.ownership') }}">Manage Ownership</a>
+                </div>
+              </li>
+              @endif
+              @endauth
         </ul>
 
         <ul class="navbar-nav ml-auto">

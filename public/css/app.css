@@ -17035,11 +17035,6 @@ readers do not read off random characters that represent icons */
   margin: 1rem 0;
 }
 
-.line {
-  border-bottom: dotted #ff9900 2px;
-  margin: 2rem 0;
-}
-
 #movie-list img {
   width: 200px;
   transition: ease-in opacity 0.5s;
@@ -17079,6 +17074,35 @@ a.disabled {
   font-weight: normal;
 }
 
+.screen {
+  border-bottom: black 20px solid;
+}
+
+.transparant {
+  opacity: 0.96;
+}
+
+.cinema-search .card {
+  border: none;
+  border-radius: 5px;
+  background-color: #666;
+}
+
+.cinema-search .card-body {
+  border-radius: 5px;
+  background-color: #666;
+}
+
+.cinema-search .card-header {
+  background-color: #444;
+  color: white;
+}
+
+.cinema-search .list-group-item {
+  background-color: #777;
+  color: white;
+}
+
 .btn-primary {
   color: white;
   font-weight: bold;
@@ -17112,17 +17136,14 @@ a.disabled {
   font-size: 1rem;
 }
 
-.screen {
-  border-bottom: black 20px solid;
-}
-
 .rotate-45 {
   transform: rotate(135deg);
   font-size: 1rem;
   padding-top: 1px;
 }
 
-.transparant {
-  opacity: 0.98;
+.line {
+  border-bottom: dotted #ff9900 2px;
+  margin: 2rem 0;
 }
 

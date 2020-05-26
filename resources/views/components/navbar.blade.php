@@ -15,20 +15,6 @@
             <li class="nav-item">
                 <a href="{{ route('cinemas.index') }}" class="nav-link">Cinemas</a>
             </li>
-            @auth
-            @if (Auth::user()->isAdmin)
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('movies.create') }}">Add movie</a>
-                    <a class="dropdown-item" href="{{ route('cinemas.create') }}">Add cinema</a>
-                    <a class="dropdown-item" href="{{ route('users.ownership') }}">Manage Ownership</a>
-                </div>
-              </li>
-              @endif
-              @endauth
         </ul>
 
         <ul class="navbar-nav ml-auto">
@@ -40,6 +26,31 @@
                 <a href="{{ route('login') }}" class="nav-link">Login</a>
             </li>
             @else
+            @if (Auth::user()->isAdmin)
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('movies.create') }}">Add movie</a>
+                    <a class="dropdown-item" href="{{ route('cinemas.create') }}">Add cinema</a>
+                    <a class="dropdown-item" href="{{ route('users.ownership') }}">Manage Ownership</a>
+                </div>
+            </li>
+            @endif
+            @if (Auth::user()->cinemas->count() > 0)
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Owned cinemas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach (Auth::user()->cinemas as $cinema)
+                        <a class="dropdown-item" href="{{ route('programs.list', ['cinema'=>$cinema]) }}">{{ $cinema->name }}</a>
+                    @endforeach
+                </div>
+            </li>
+            @endif
+            
             <li class="nav-item">
                 <a href="{{ route('user') }}" class="nav-link">{{ Auth::user()->fullname }}</a>
             </li>

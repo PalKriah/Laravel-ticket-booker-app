@@ -49,5 +49,16 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/ownership', 'UserController@ownership')->name('users.ownership');
     Route::post('/ownership-insert', 'UserController@ownershipInsert')->name('users.ownership.insert');
-    Route::post('/ownership-delete/{user}{cinema}', 'UserController@ownershipDelete')->name('users.ownership.delete');
+    Route::post('/ownership-delete/{user}/cinema/{cinema}', 'UserController@ownershipDelete')->name('users.ownership.delete');
+});
+
+Route::group(['middleware' => 'owner'], function () {
+    Route::get('/ownership-program-list/{cinema}', 'ProgramController@index')->name('programs.list');
+    Route::get('/ownership-program-create/{cinema}', 'ProgramController@create')->name('programs.create');
+    Route::post('/ownership-program-insert/{cinema}', 'ProgramController@insert')->name('programs.insert');
+    Route::post('/ownership-program-delete/{cinema}/program/{program}', 'ProgramController@delete')->name('programs.delete');
+
+    Route::get('/ownership-room-create/{cinema}', 'RoomController@create')->name('rooms.create');
+    Route::post('/ownership-room-insert/{cinema}', 'RoomController@insert')->name('rooms.insert');
+    Route::post('/ownership-room-delete/{cinema}/room/{room}', 'RoomController@delete')->name('rooms.delete');
 });

@@ -10,4 +10,14 @@ class Cinema extends Model
         'name', 'country',
         'city', 'location'
     ];
+
+    public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }

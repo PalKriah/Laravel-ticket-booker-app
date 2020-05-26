@@ -2,15 +2,15 @@ $primary: #ff9900;
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
-
-$dropdown-bg:                       $dark;
-$dropdown-link-color:               $light;
+$dropdown-bg: $dark;
+$dropdown-link-color: $light;
 
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "./home.scss";
+@import "./content.scss";
 
 .btn-primary {
     color: white;
@@ -47,16 +47,13 @@ $dropdown-link-color:               $light;
     }
 }
 
-.screen {
-    border-bottom: black 20px solid;
-}
-
 .rotate-45 {
     transform: rotate(135deg);
     font-size: 1rem;
     padding-top: 1px;
 }
 
-.transparant {
-    opacity: 0.98;
+.line {
+    border-bottom: dotted $primary 2px;
+    margin: 2rem 0;
 }

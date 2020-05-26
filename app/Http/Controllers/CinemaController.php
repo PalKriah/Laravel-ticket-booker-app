@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Movie;
 use App\Models\Cinema;
 use App\Http\Requests\CinemaRequest;
+use App\Models\BookedSeat;
+use App\Models\Program;
 use DateTime;
 
 class CinemaController extends Controller
@@ -84,13 +86,14 @@ class CinemaController extends Controller
                 $monthDays = array();
             }
 
-            for ($j = 0; $j < count($dates); $j++) {
-                if (date_format(new DateTime($dates[0]->date), 'Y-m-d') == date_format($date, 'Y-m-d')) {
+            foreach ($dates as $moviedate) {
+                if (date_format(new DateTime($moviedate->date), 'Y-m-d') == date_format($date, 'Y-m-d')) {
                     array_push($monthDays, ["number" => date_format($date, "d"), "active" => true]);
                     $added = true;
                     break;
                 }
             }
+
             if (!$added) {
                 array_push($monthDays, ["number" => date_format($date, "d"), "active" => false]);
             }

@@ -16,7 +16,7 @@ class AdminGuard
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->isAdmin == true) {
+        if (Auth::user() && Auth::user()->isAdmin == true) {
             return $next($request);
         }
         return redirect('/');

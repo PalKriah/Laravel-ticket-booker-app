@@ -15,7 +15,6 @@
 
 </div>
 
-
 <script>
     function fetch_day_schedule(year, month, day, cinema)
     {

@@ -13,14 +13,14 @@ class CinemaSeeder extends Seeder
     public function run()
     {
         $cinema = new Cinema();
-        $cinema->name = 'Cinema City';
+        $cinema->name = 'Cinema City Miskolc';
         $cinema->country = 'Hungary';
         $cinema->city = 'Miskolc';
         $cinema->location = 'Szentpáli utca 2-4.';
         $cinema->save();
 
         $cinema = new Cinema();
-        $cinema->name = 'Cinema City';
+        $cinema->name = 'Cinema City Székesfehérvár';
         $cinema->country = 'Hungary';
         $cinema->city = 'Székesfehérvár';
         $cinema->location = 'Palotai út 1.';

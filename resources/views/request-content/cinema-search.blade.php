@@ -1,5 +1,5 @@
 @foreach ($cinemas as $cinema)
-<div class="row justify-content-center text-dark my-4">
+<div class="row justify-content-center text-dark my-4 cinema-search">
     <div class="card col-md-10 p-0 transparant">
         <div class="card-header d-flex">
             <h4>{{ $cinema->name }}</h4>
@@ -23,7 +23,7 @@
             </ul>
             <div class="row justify-content-end m-0 mt-2">
                 <a href="{{ route('cinemas.show', ['cinema' => $cinema->id]) }}"
-                    class="btn btn-info col-md-4 col-6">View
+                    class="btn btn-primary col-md-2 col-6">View
                     schedule</a>
             </div>
         </div>

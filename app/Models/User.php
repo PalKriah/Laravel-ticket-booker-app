@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function cinemas()
+    {
+        return $this->belongsToMany(Cinema::class);
+    }
+
     public function getFullnameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";

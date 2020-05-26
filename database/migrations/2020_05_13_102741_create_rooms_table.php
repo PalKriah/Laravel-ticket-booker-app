@@ -17,7 +17,6 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->foreignId('cinema_id');
             $table->integer('number');
-            $table->integer('seats');
             $table->timestamps();
 
             $table->unique(['number', 'cinema_id']);

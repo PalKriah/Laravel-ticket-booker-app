@@ -1,0 +1,71 @@
+#movie-list {
+    img {
+        width: 200px;
+        transition: ease-in opacity 0.5s;
+    }
+
+    img:hover {
+        opacity: 0.7;
+    }
+}
+
+#movie-item {
+    img {
+        width: 300px;
+        transition: ease-in transform 0.5s;
+    }
+    img:hover {
+        transform: scale(1.05);
+    }
+}
+
+.mt-10 {
+    margin-top: 10%;
+}
+
+.genre-label {
+    padding: 0.15rem 0.25rem;
+    background-color: $primary;
+    border-radius: 5px;
+}
+
+a.disabled {
+    color: gray;
+    pointer-events: none;
+}
+
+.btn-time {
+    padding: 0.25rem;
+    margin: 0.5rem;
+    font-weight: normal;
+}
+
+.screen {
+    border-bottom: black 20px solid;
+}
+
+.transparant {
+    opacity: 0.96;
+}
+
+.cinema-search {
+    .card {
+        border: none;
+        border-radius: 5px;
+        background-color: #666;
+    }
+    .card-body {
+        border-radius: 5px;
+        background-color: #666
+    }
+
+    .card-header {
+        background-color: #444;
+        color: white;
+    }
+
+    .list-group-item {
+        background-color: #777;
+        color: white;
+    }
+}
